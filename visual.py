@@ -9,7 +9,8 @@ from typing import List, Union
 def plot_images(images, cols=3, cell_size=5):
     N = len(images)
     assert(N > 0)
-    rows = int(np.ceil(1.0 * N / cols))    
+    rows = int(np.ceil(1.0 * N / cols))   
+    if len(images) < cols: cols = len(images)
     fig = plt.figure(figsize=(cell_size*cols, cell_size*rows))
     for i in range(1, cols*rows + 1):
         idx = i - 1
