@@ -17,6 +17,7 @@ def plot_images(images, cols=3, cell_size=5):
     fig = plt.figure(figsize=(cell_size*cols, cell_size*rows))
     for i in range(1, cols*rows + 1):
         idx = i - 1
+        if idx >= len(images): break
         image = images[idx]
         title = str(idx)
         if type(image) == str or type(image) == type(Path()):
