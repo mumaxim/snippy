@@ -9,7 +9,7 @@ from typing import List, Union
 from pprint import PrettyPrinter
 pprint = PrettyPrinter().pprint
 
-def plot_images(images, cols=3, cell_size=5):
+def plot_images(images, cols=3, cell_size=5, titles=[]):
     N = len(images)
     assert(N > 0)
     rows = int(np.ceil(1.0 * N / cols))   
@@ -27,6 +27,7 @@ def plot_images(images, cols=3, cell_size=5):
             title = title + ": " + image[:ln_len] + "\n" + image[ln_len:]
             image = Image.imread(image)
         ax = fig.add_subplot(rows, cols, i)
+        if idx < len(titles): title = str(idx) + ": " + titles[idx]
         ax.set_title(title)
         plt.imshow(image)
     plt.show()
