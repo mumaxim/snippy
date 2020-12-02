@@ -6,6 +6,9 @@ from pathlib import Path
 import os
 from typing import List, Union
 
+from pprint import PrettyPrinter
+pprint = PrettyPrinter().pprint
+
 def plot_images(images, cols=3, cell_size=5):
     N = len(images)
     assert(N > 0)
@@ -19,7 +22,8 @@ def plot_images(images, cols=3, cell_size=5):
         if type(image) == str or type(image) == type(Path()):
             image = str(image)
             assert(os.path.exists(image))
-            title = title + ": " + image
+            ln_len = 18 * cell_size // cols  # For long paths
+            title = title + ": " + image[:ln_len] + "\n" + image[ln_len:]
             image = Image.imread(image)
         ax = fig.add_subplot(rows, cols, i)
         ax.set_title(title)
