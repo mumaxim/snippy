@@ -15,6 +15,7 @@ export PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]
 alias mnt_remote="sudo sshfs -p 8080 USER@IP_ADDRESS:/home/USER /mnt/REMOTE/ -o IdentityFile=/home/maxim/.ssh/RSA_KEY,allow_other"
 
 # Change the title of the current terminal window
+title()
 {
    echo -ne "\033]0;$*\007"
 }
