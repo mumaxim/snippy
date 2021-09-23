@@ -3,7 +3,7 @@ from matplotlib import image as Image
 import cv2
 import numpy as np
 from pathlib import Path
-import os
+import sys
 from typing import List, Union
 import os
 from tqdm import tqdm
