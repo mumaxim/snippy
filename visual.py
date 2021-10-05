@@ -31,8 +31,7 @@ def plot_images(images, cols=3, cell_size=5, titles=[], save_path=""):
             if len(titles[idx]) > ln_len:
                 title = title + ": " + titles[idx][:ln_len] + "\n" + titles[idx][ln_len:]
             else:
-                title = title + ": " + titles[idx]            
-            image = Image.imread(image)
+                title = title + ": " + titles[idx]  
         elif type(image) == str or type(image) == type(Path()):
             image = str(image)
             assert(os.path.exists(image))  
@@ -40,6 +39,7 @@ def plot_images(images, cols=3, cell_size=5, titles=[], save_path=""):
                 title = title + ": " + image[:ln_len] + "\n" + image[ln_len:]
             else:
                 title = title + ": " + image
+        if type(image) == str or type(image) == type(Path()):
             image = Image.imread(image)
         ax = fig.add_subplot(rows, cols, i)
         ax.set_title(title)
