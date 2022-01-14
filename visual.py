@@ -15,7 +15,7 @@ from IPython.display import display, HTML
 from pprint import PrettyPrinter
 pprint = PrettyPrinter().pprint
 
-def plot_images(images, cols=3, cell_size=5, titles=[], save_path=""):
+def plot_images(images, cols=3, cell_size=5, titles=[], save_path="", bgr2rgb=True):
     N = len(images)
     assert(N > 0)
     rows = int(np.ceil(1.0 * N / cols))   
@@ -43,6 +43,7 @@ def plot_images(images, cols=3, cell_size=5, titles=[], save_path=""):
             image = Image.imread(image)
         ax = fig.add_subplot(rows, cols, i)
         ax.set_title(title)
+        if bgr2rgb: image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         plt.imshow(image)
     plt.show()
     save_path = str(save_path)
