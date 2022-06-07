@@ -6,7 +6,7 @@ from typing import List, Dict, Union
 
 # Todo: colorize levels ?
 def set_logging_level(level: str):
-    logFormatter = logging.Formatter("%(asctime)s %(levelname)-5.5s  %(message)s")
+    logFormatter = logging.Formatter("%(asctime)s %(levelname)-5.5s  %(message)s", "%y-%m-%d %H:%M:%S")
     consoleHandler = logging.StreamHandler()
     consoleHandler.setFormatter(logFormatter)
     logging.getLogger().addHandler(consoleHandler)
