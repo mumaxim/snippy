@@ -40,7 +40,7 @@ def plot_images(images, cols=3, cell_size=5, titles=[], save_path="", bgr2rgb=Tr
             else:
                 title = title + ": " + image
         if type(image) == str or type(image) == type(Path()):
-            image = Image.imread(image)
+            image = cv2.imread(image)
         ax = fig.add_subplot(rows, cols, i)
         ax.set_title(title)
         if bgr2rgb: image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
