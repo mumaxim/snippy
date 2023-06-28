@@ -16,6 +16,7 @@ from pprint import PrettyPrinter
 pprint = PrettyPrinter().pprint
 
 def plot_images(images, cols=3, cell_size=5, titles=[], save_path="", bgr2rgb=True):
+    videos_exts = ["mp4", "avi", "3gp", "mov", "mpeg", "mkv", "webm"]
     N = len(images)
     assert(N > 0)
     rows = int(np.ceil(1.0 * N / cols))   
@@ -40,7 +41,14 @@ def plot_images(images, cols=3, cell_size=5, titles=[], save_path="", bgr2rgb=Tr
             else:
                 title = title + ": " + image
         if type(image) == str or type(image) == type(Path()):
-            image = cv2.imread(image)
+            path = str(image)
+            ext = path.split(".")[-1].lower()
+            if not ext in videos_exts:
+                image = cv2.imread(path)
+            else:
+                cap = cv2.VideoCapture(path)
+                ret, image = cap.read()
+                cap.release()
         ax = fig.add_subplot(rows, cols, i)
         ax.set_title(title)
         if bgr2rgb: image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
