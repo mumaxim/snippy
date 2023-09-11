@@ -26,3 +26,6 @@ alias remote_ssh="title REMOTE ; ssh USER@IP_ADDRESS"
 # SSH with tmux command
 alias remote_ssh="title REMOTE ; ssh USER@IP_ADDRESS -t 'tmux attach; bash -l'"
 
+# Last filename in catalog. Usage example: cd $(last)
+alias last="ls -t | head -1"
+
